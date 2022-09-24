@@ -31,13 +31,17 @@ step4. source devel/setup.bash
 ```
 [terminal1] step1. roscore 
 
-[terminal2] step2. run fgo_imu_gnss fgo_gps_imu_node src/navgation_module/config/imu_gps_fuse_datasets/mobile_one_for_all_withgps.yaml src/navgation_module/config/imu_gps_fuse_datasets/ICM20602.txt src/navgation_module/config/imu_gps_fuse_datasets/GNSS_RTK.pos src/navgation_module/config/imu_gps_fuse_datasets/truth.nav
+[terminal2] step2. rosrun fgo_imu_gnss ob_gins_node src/navgation_module/config/ob_dataset/ob_gins.yaml
 
 [terminal3] step3. Start rviz and select display_file [src/navgation_module/config/imu_gps_fuse_datasets/gnss_imu_ros_display.rviz]
 ```
 
 
+## Acknowledgments
+```
+OB_GINS : https://github.com/i2Nav-WHU/OB_GINS
+Graph-Optimizor : https://github.com/Horizon1026/Graph-Optimizor
+thanks for providing.
+```
 
 
-
-# learn_gins_ws
