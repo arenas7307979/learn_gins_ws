@@ -1,0 +1,128 @@
+#---------------------------Saving_Path
+save_path:
+        path_record_save : /slam_core/src/navgation_module/result/
+
+        #Command : roslaunch slam_corevis slam_corevis_mono_raw_data_lodaer
+        #sensor_data_folder_path :: for raw_data_loader running slam, under the path have image, imu.cs
+        sensor_data_folder_path: /datasets/slam_datasets/android_p1_dataset/indoor_walk/xunwei2/
+#--------------------------- Odom Localization
+camera0:
+    model_type: PINHOLE
+    image_width: 640
+    image_height: 480
+    # fx: 596.320130409
+    # fy: 595.034301236913
+    # cx: 317.3042572634
+    # cy: 244.9717456952
+    # k1: 0.0185482867656
+    # k2: 0.0293908960408794
+    # p1: 0.00301658635407
+    # p2: -0.0025048559881
+    fx: 520.320130409
+    fy: 520.034301236913
+    cx: 320.0
+    cy: 240.0
+    k1: 0.01
+    k2: 0.0
+    p1: 0.0
+    p2: 0.0
+
+frontend:
+    clahe_param: 3.0
+    F_th: 3.0                         # ransac threshold (pixel)
+    epipolar_th: 3.0
+    fast_th: 8
+    min_dist: 30.0
+    max_cnt: 150
+    FREQ: 15                          # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
+    KLT_STEP_WINDOW: 21
+
+backend:
+    window_size: 10
+    gravity_magnitude: 9.805
+    min_parallax: 10.0
+    max_solver_time_in_second: 0.05
+    max_num_iterations: 10
+    loss_function_param: 1.0
+    default_depth: 5.0
+    car_constriant_vxy_zero: 0        #car model Vwb.z()[gravity]~=0; 1 is using constriant, 0 is not using constriant
+    max_imu_sum_t: 10.0
+    min_num_stereo_pair: 45
+    rolling_shutter: 0                  # 0 global shutter camera, 1 rolling shutter camera
+    rolling_shutter_tr: 0.0           # unit s. rolling shutter read out time per frame (from data sheet).
+    estimate_td: 1                      # online estimate time offset between camera and imu
+    td: 0.000                           # initial value of time offset. unit s. readed image clock + td = real image clock (IMU clock)
+    estimate_camera_intrinsic: 1        # 0 non-auto calibration camera model para, 1 auto calibration camera model para. / (not suitable for car motion)
+    estimate_extrinsic: 2               # 0  not to optimaze extrinsic imu and cam. / (not suitable for car motion)
+                                        # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
+                                        # 2  Don't know anything about extrinsic parameters. You don't need to give R,T. We will try to calibrate it.
+local_fusion:
+    voc_path: "/slam_core/src/navgation_module/config/dbow/voc/brief_k10L6.bin"
+    brief_pattern_path: "/slam_core/src/navgation_module/config/dbow/brief/brief_pattern.yml"
+
+scale:
+    kinect_using_uint32: 0
+
+wheel_intrinsic:
+    rL: 0.035 #[m]
+    rR: 0.035 #[m]
+    wheelbase: 0.245 #[m]
+    wheel_velocity_noise: 0.15 #[m] 0.02 or 0.008
+    wheel_angular_noise: 0.15
+
+extrinsic:
+    p_bc:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+    q_bc:
+        w: 1.0
+        x: 0.0
+        y: 0.0
+        z: 0.0
+
+    #from wheel of center to camera
+    p_wheel_imu:                         #wheel odom center (wheel is center of rear left and rear right wheel) for viwo (visual imu wheel odom) fusion
+         x: 0.00221768
+         y: -0.116964
+         z: 0.38                        #Tz([wheel] and [imu or camera]) observation cannot be online calibrated
+    q_wheel_imu:
+         x: -0.468789
+         y: 0.555965
+         z: -0.46997
+         w: 0.500268
+         
+    pc_baselink:                         #robot odom(baselink is coordinate of robot center)
+        x: 0.0
+        y: 0.882
+        z: -0.064
+    qc_baselink:
+        w: -0.453
+        x: -0.543
+        y: 0.543
+        z: -0.453
+imu:
+    #imu parameters       The more accurate parameters you provide, the better performance
+    acc_noise: 0.2 #0.2
+    gyr_noise: 0.02 #0.02
+    acc_bias_noise: 0.002 #0.003
+    gyr_bias_noise: 0.0002 #0.0003
+
+
+gps_fgo:
+    gnss_window_size : 10 
+    arw: 0.24     # deg/sqrt(hr)
+    vrw: 0.24     # m/s/sqrt(hr)
+    gbstd: 200.0   # deg/hr
+    abstd: 1000.0  # mGal
+    corrtime: 1.0 # hr
+
+
+#--------------------------- LoopClosure Localization
+
+#--------------------------- Mapping Perception
+
+#--------------------------- PathPlanning Moving
+
+#--------------------------- ControlRobot Moving
+

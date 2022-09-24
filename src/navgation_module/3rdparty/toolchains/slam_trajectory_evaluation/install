@@ -1,0 +1,58 @@
+1. install evo
+https://pypi.org/project/evo/
+
+
+1. 基础指令
+
+evo绘制轨迹的指令为：evo_traj，后跟必要参数有：数据的格式（tum/kitti/bag/euroc等），轨迹文件。轨迹文件可以有多个，例如：
+
+evo_traj tum traj1.txt traj2.txt
+
+这个指令只是显示轨迹的基本信息，若要绘制轨迹，则增加可选参数 -p 或 --plot
+
+evo_traj tum traj1.txt –p
+
+
+2. 轨迹对齐
+
+我们时常需要将估计轨迹与真实轨迹同时绘制，可采用指令：
+
+evo_traj tum realTraj.txt estTraj.txt -p
+
+然而存储时轨迹多为相对位置变化，所以绘制出的轨迹在初始位置上存在一定的位置和角度偏移，出现以下情况。
+
+(如图所示，左图为绘制的两条曲线，通过调整可以发现两个曲线形状大体相同，但没有对齐，从而具有较大的误差）
+
+这时我们采用对齐指令将两条轨迹进行对齐。为此我们需要通--ref参数指定参考轨迹，并增加参数-a（或--align）进行对齐（旋转与平移）
+
+evo_traj tum estTraj.txt --ref realTraj.txt -p -a
+
+
+3. 轨迹尺度缩放
+
+单目相机会存在尺度的不确定性，evo_traj 支持使用-s（或 --correct_scale）参数进行Sim(3)上的对齐（旋转、平移与尺度缩放）
+
+
+三、轨迹评估
+
+evo可以评估两条轨迹的误差，主要有两个命令：
+
+evo_ape：计算绝对位姿误差(absolute pose error)，用于整体评估整条轨迹的全局一致性；
+
+evo_rpe：计算相对位姿误差(relative pose error)，用于评价轨迹局部的准确性。
+
+这两个指令也支持evo_traj的可选参数，轨迹对齐-a与尺度缩放-s。完整指令如下：
+
+evo_ape tum realTraj.txt estTraj.txt -a –s
+
+此时将显示轨迹误差相关结果。
+
+
+四 進階使用
+https://github.com/MichaelGrupp/evo/wiki
+
+
+
+
+
+若增加可选参数-p，可以绘制误差相关曲线：

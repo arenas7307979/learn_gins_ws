@@ -1,0 +1,11 @@
+*.swp
+*.bak
+*.swo
+build
+build_*
+3rdparty/cmake/cmake-3.17.3
+3rdparty/*/build
+3rdparty/*/build_*
+3rdparty/Pangolin
+test/*/build
+test/*/build_*

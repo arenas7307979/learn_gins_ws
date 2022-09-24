@@ -1,0 +1,18 @@
+1. 
+rosrun fgo_imu_gnss fgo_gps_imu_node src/navgation_module/config/imu_gps_fuse_datasets/mobile_one_for_all_withgps.yaml src/navgation_module/config/imu_gps_fuse_datasets/ICM20602.txt src/navgation_module/config/imu_gps_fuse_datasets/GNSS_RTK.pos src/navgation_module/config/imu_gps_fuse_datasets/truth.nav
+
+yaml : mobile_one_for_all_withgps.yaml
+
+2.
+rosrun fgo_imu_gnss fgo_gps_imu_node src/navgation_module/config/imu_gps_fuse_datasets/mobile_one_for_all_withgps.yaml src/navgation_module/config/imu_gps_fuse_datasets/android_gnss_test/imu0.csv src/navgation_module/config/imu_gps_fuse_datasets/android_gnss_test/gps.csv src/navgation_module/config/imu_gps_fuse_datasets/android_gnss_test/gps.csv
+
+
+3.OB_GINS
+rosrun fgo_imu_gnss ob_gins_node src/navgation_module/config/ob_dataset/ob_gins.yaml
+
+
+4.Read iphone ob_dataset
+
+rosrun fgo_imu_gnss iphone_data_loader_node src/navgation_module/config/imu_gps_fuse_datasets/mobile_one_for_all_withgps.yaml ../../slam_dataset_mac/iphone_datasets/iphone_car/2022-09-17T15-53-23/SyncAccGyro.txt ../../slam_dataset_mac/iphone_datasets/iphone_car/2022-09-17T15-53-23/GPS.txt 
+
+rosrun fgo_imu_gnss iphone_data_loader_node src/navgation_module/config/imu_gps_fuse_datasets/mobile_one_for_all_withgps.yaml ../../slam_dataset_mac/iphone_datasets/iphone_car/2022-09-17T16-19-16/SyncAccGyro.txt ../../slam_dataset_mac/iphone_datasets/iphone_car/2022-09-17T16-19-16/GPS.txt 
