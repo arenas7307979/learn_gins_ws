@@ -1,13 +1,6 @@
 # learn_gins_ws
-## To be solved : vsolver and template ba_solver are unstable
+## To be solved : ⚠️vsolver and template ba_solver are unstable⚠️
 
-
-##Select linear Solver (learn_gins_ws/src/navgation_module/core_lib/src/fgo_gps_imu/fgo_gps_imu_solver.cpp)
-```
-// 0 : ceres solver, 1 : vsolver, 2: template ba_solver
-#define CERES_SOLVE_BULL_IMU 0
-
-```
 
 ## build 3rdParty
 ```
@@ -16,6 +9,12 @@ step2. ./tools.sh --build all
 step3. cd ../../
 step3. catkin build
 step4. source devel/setup.bash
+```
+## Select linear Solver (learn_gins_ws/src/navgation_module/core_lib/src/fgo_gps_imu/fgo_gps_imu_solver.cpp)
+```
+// 0 : ceres solver, 1 : vsolver, 2: template ba_solver
+#define CERES_SOLVE_BULL_IMU 0
+catkin build
 ```
 
 ## run iphone_datatest (ros display)
