@@ -1,5 +1,5 @@
 # learn_gins_ws
-## To be solved : ⚠️vsolver and template ba_solver are unstable⚠️
+## To be solved :  ⚠️ vsolver and ba_solver are unstable (iphone dataset) ⚠️
 
 
 ## build 3rdParty
@@ -17,7 +17,7 @@ step4. source devel/setup.bash
 catkin build
 ```
 
-## run iphone_datatest (ros display)
+## run iphone_datatest (ros display) ⚠️ vsolver and ba_solver failed ⚠️
 ```
 [terminal1] step1. roscore 
 
