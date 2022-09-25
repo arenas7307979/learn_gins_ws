@@ -1,4 +1,5 @@
 # learn_gins_ws
+## To be solved : vsolver and template ba_solver are unstable
 
 
 ##Select linear Solver (learn_gins_ws/src/navgation_module/core_lib/src/fgo_gps_imu/fgo_gps_imu_solver.cpp)
